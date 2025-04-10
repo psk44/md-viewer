@@ -1,0 +1,19 @@
+<p>
+  <strong>Title:</strong>
+  <%= @document.title %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= markdown(@document.content) %>
+</p>
+
+<% if @document.markdown_file.attached? %>
+<p>
+  <strong>Attached File:</strong>
+  <%= link_to "Download", rails_blob_path(@document.markdown_file, disposition: "attachment") %>
+</p>
+<% end %>
+
+<%= link_to 'Edit', edit_document_path(@document) %> |
+<%= link_to 'Back', documents_path %>
